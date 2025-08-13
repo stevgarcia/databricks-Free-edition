@@ -19,6 +19,10 @@ This project involves:
 #### Objective
 Build a databricks pipeline to support an ETL with a medallion architecture and the use of Delta live tables .
 
+
+<img width="302" height="388" alt="image" src="https://github.com/user-attachments/assets/992699af-cf3b-447e-a9af-d1bae27d1188" />
+
+
 #### Specifications
 - **Data Sources**: a predefined SQL script that creates a east sales, west sales, customers and products in UNITY CATALOG.
 
