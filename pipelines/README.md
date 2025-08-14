@@ -32,4 +32,8 @@ Build a databricks pipeline to support an ETL with a medallion architecture and 
 - It creates a streaming table to get the products data with defined EXPECTATIONS.
 - It creates a streaming table to get the customers data with defined EXPECTATIONS.
 
-- **Silver layer**: it creates an enriched streamings views on top of the streaming tables from the bronze layer. It supports the Change data capture with the use of the flow AUTOCDC and apply simple transformations.
+- **Silver layer**: it creates an enriched streamings views on top of the streaming tables from the bronze layer. It supports the Change data capture with the use of the flow AUTOCDC and applies simple transformations.
+
+- **Gold layer**: it creates the dimensions with the user of streaming tables on top of the enriched views from silver layer usin AUTOCDC and supporting SCD type 2.
+
+- **Business view**: the business_sales view is a materialized view that comes from the join etween fact_sales and dim_product
