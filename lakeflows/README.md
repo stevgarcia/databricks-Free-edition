@@ -2,7 +2,8 @@
 
 Welcome to the ##lakeFlow Jobs##
 
-This project demonstrates 
+This project has 3 parquet files, orders, products and regions hosted in a volume called source.
+
 
 
 
@@ -10,10 +11,19 @@ This project demonstrates
 ## 📖 Project Overview
 This project involves:
 
-1. **Unit catalog**: a Data warehouse created in Unity catalog over the source schema.
-2. **ETL Pipeline**: a pipeline defined in databricks with multiple notebooks for creating a medallion architecture.
-3. **Data warehouse**: a predefined SQL script that creates a east sales, west sales, customers and products
+1. **Volume**: his project has 3 parquet files, orders, products and regions hosted in a volume named as  source.
+2.  **Notebook**: a Pyspark notebook named ingestion that uses widgets expecting the parameter file_names and then writes all the parquet files over a volume in a folder called sink.
 
+<img width="644" height="470" alt="image" src="https://github.com/user-attachments/assets/336b4b1d-fe65-44ee-9675-284d35017c29" />
+
+
+3. **SQL mapping**: an SQL scrip that creates a table in the default schema with the file names
+   
+<img width="1028" height="712" alt="image" src="https://github.com/user-attachments/assets/a8078202-d555-4002-98ec-6b8ea8a364cd" />
+
+4. **SQL task**: the task executes an select * from mapping
+5. **Loop**: a loop  named DynamicIngestion that iterates with {{tasks.SQLArray.output.rows}}
+6.  **task inside a loop**: a task named iteration that sends the file names to a Notebook previously configured with widgets to load the data in the sink folder. 
 
    
 #### Objective
