@@ -2,9 +2,10 @@
 
 Welcome to the ##lakeFlow Jobs##
 
-This project has 3 parquet files, orders, products and regions hosted in a volume called source.
+This project creates a dataflow job, where two task are connected, the first task Selects with SQL the name of multiple files and with the use of parameters the second one, gets the names with the use of widgets and then using Pyspark writes the data over a volume as a sink.
 
 
+<img width="823" height="275" alt="image" src="https://github.com/user-attachments/assets/033e04ad-7ec0-44f6-84e9-6a04cf8c9e59" />
 
 
 
@@ -25,25 +26,7 @@ This project involves:
 5. **Loop**: a loop  named DynamicIngestion that iterates with {{tasks.SQLArray.output.rows}}
 6.  **task inside a loop**: a task named iteration that sends the file names to a Notebook previously configured with widgets to load the data in the sink folder. 
 
-   
-#### Objective
-Build a databricks pipeline to support an ETL with a medallion architecture and the use of Delta live tables .
 
 
 
-
-#### Specifications
-- **Data Sources**: a predefined SQL script that creates a east sales, west sales, customers and products in UNITY CATALOG.
-
-
-
-- **Bronze layer**: involves the use of an empty streaming table and an append flow to obtain the east sales and west sales, and unify them. 
-- It creates a streaming table to get the products data with defined EXPECTATIONS.
-- It creates a streaming table to get the customers data with defined EXPECTATIONS.
-
-- **Silver layer**: it creates an enriched streamings views on top of the streaming tables from the bronze layer. It supports the Change data capture with the use of the flow AUTOCDC and applies simple transformations.
-
-- **Gold layer**: it creates the dimensions with the user of streaming tables on top of the enriched views from silver layer usin AUTOCDC and supporting SCD type 2.
-
-- **Business view**: the business_sales view is a materialized view that comes from the join etween fact_sales and dim_product
 
