@@ -2,7 +2,7 @@
 
 Welcome to the ##lakeFlow Jobs##
 
-This project creates a dataflow job, where two task are connected, the first task Selects with SQL the name of multiple files and with the use of parameters the second one, gets the names with the use of widgets and then using Pyspark writes the data over a volume as a sink.
+This project creates a dataflow job, where two task are connected, the first task Selects with SQL the name of multiple files and with the use of parameters the second one, gets the names with the use of widgets and then using Pyspark writes the data in delta format in a volume as a sink.
 
 
 <img width="823" height="275" alt="image" src="https://github.com/user-attachments/assets/033e04ad-7ec0-44f6-84e9-6a04cf8c9e59" />
@@ -24,7 +24,10 @@ This project involves:
 
 4. **SQL task**: the task executes an select * from mapping
 5. **Loop**: a loop  named DynamicIngestion that iterates with {{tasks.SQLArray.output.rows}}
-6.  **task inside a loop**: a task named iteration that sends the file names to a Notebook previously configured with widgets to load the data in the sink folder. 
+6.  **task inside a loop**: a task named iteration that sends the file names to a Notebook previously configured with widgets to load the data in the sink folder in delta format. 
+
+
+<img width="1037" height="516" alt="image" src="https://github.com/user-attachments/assets/16ea6293-f7ee-46e6-ad84-b49afa7583cb" />
 
 
 
